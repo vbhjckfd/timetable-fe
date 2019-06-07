@@ -1,4 +1,3 @@
-require 'active_support/all'
 require 'sinatra'
 
 get '/' do
@@ -21,7 +20,7 @@ post '/partners/startmobile' do
   raw_data = %x(curl --max-time 30 --silent "#{request_url}" -H "Accept: application/json")
 
   begin
-    data = JSON.parse(raw_data).deep_symbolize_keys
+    data = JSON.parse(raw_data)
   rescue JSON::ParserError => e
     data = []
   end
@@ -29,10 +28,10 @@ post '/partners/startmobile' do
   return render :nothing => true, :status => :service_unavailable if data.empty?
 
   timetable = {};
-  data[:timetable].each do |item|
-    timetable[item[:route]] = [] unless timetable.key? item[:route]
+  data['timetable'].each do |item|
+    timetable[item['route']] = [] unless timetable.key? item['route']
 
-    timetable[item[:route]] << item[:time_left] if timetable[item[:route]].length < 2
+    timetable[item['route']] << item['time_left'] if timetable[item['route']].length < 2
   end
 
   result = []
