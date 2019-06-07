@@ -1,14 +1,16 @@
 FROM ruby:2.5-stretch
 
-RUN bundle config --global frozen 1
-
-COPY Gemfile Gemfile.lock /application/
-
 # Change to the application's directory
-WORKDIR /application
+ENV APP_HOME /application
+RUN mkdir $APP_HOME
+WORKDIR $APP_HOME
 
-RUN bundle install --deployment --without development test
+ADD Gemfile* $APP_HOME/
 
-COPY . /application/
+RUN bundle install --without development test
+
+ADD . $APP_HOME
+
+EXPOSE 4567
 
 ENTRYPOINT ["./entrypoint.sh"]
