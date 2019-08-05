@@ -13,5 +13,5 @@ resources:
   memory_gb: 0.5
   disk_size_gb: 10
 env_variables:
-  API_URL: "https://lad/lviv.ua/api"
+  API_URL: "https://lad.lviv.ua/api"
   APP_ENV: production
