@@ -5,4 +5,6 @@ ruby '2.5.5'
 
 gem 'sinatra'
 
+gem 'slim', '~> 4.0', '>= 4.0.1'
+
 gem 'nokogiri', '~> 1.6', '>= 1.6.8'

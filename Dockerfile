@@ -13,4 +13,4 @@ ADD . $APP_HOME
 
 EXPOSE 4567
 
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["sh", "-c", "./entrypoint.sh"]

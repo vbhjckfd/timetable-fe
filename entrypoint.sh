@@ -1,3 +1,3 @@
 #!/bin/bash 
 
-ruby index.rb
+APP_ENV=production ruby index.rb
