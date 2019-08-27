@@ -15,7 +15,7 @@ post '/partners/startmobile' do
   xml_doc  = Nokogiri::XML(request.body.read).remove_namespaces!
   stop_code = xml_doc.xpath('//body').text
 
-  api_url = ENV['API_URL'] || 'https://api.lad.lviv.ua/'
+  api_url = ENV['API_URL'] || 'https://api.lad.lviv.ua'
   request_url = "#{api_url}/stops/#{stop_code}"
   raw_data = %x(curl --max-time 30 --silent "#{request_url}" -H "Accept: application/json")
 
