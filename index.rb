@@ -13,7 +13,7 @@ post '/partners/startmobile' do
   require 'nokogiri'
 
   xml_doc  = Nokogiri::XML(request.body.read).remove_namespaces!
-  stop_code = xml_doc.xpath('//body').text
+  stop_code = xml_doc.xpath('//body').text.strip
 
   api_url = ENV['API_URL'] || 'https://api.lad.lviv.ua'
   request_url = "#{api_url}/stops/#{stop_code}"
@@ -25,7 +25,7 @@ post '/partners/startmobile' do
     data = []
   end
 
-  return render :nothing => true, :status => :service_unavailable if data.empty?
+  halt 503 if data.empty?
 
   timetable = {};
   data['timetable'].each do |item|
