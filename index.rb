@@ -59,3 +59,26 @@ post '/partners/startmobile' do
   content_type 'application/xml'
   builder.to_xml
 end
+
+get '/closed-stops/1' do
+  redirect to 'https://pastebin.com/raw/ED5HMjrd'
+end
+
+get '/scheme' do
+  redirect to 'http://kaliberda.com/images/work/2019-05-scheme/scheme-lviv-electr-2019.pdf'
+end
+
+get '/tmp' do
+  redirect to '/tmp/'
+end
+
+get '/tmp/' do
+  send_file File.join(settings.public_folder, 'tmp/index.html')
+end
+
+get '/*' do
+  stop_code = params['splat'].first.to_i
+  pass unless stop_code
+
+  redirect to("/stops/#{stop_code}")
+end
