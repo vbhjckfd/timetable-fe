@@ -5,6 +5,11 @@ get '/' do
   slim :closest, :layout => :application
 end
 
+get '/api/stops/:code' do |code|
+  api_url = ENV['API_URL'] || 'https://api.lad.lviv.ua'
+  redirect to("#{api_url}/stops/#{stop_code}")
+end
+
 get '/stops/:code' do |code|
   slim :stop, :layout => :application
 end
