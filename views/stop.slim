@@ -45,9 +45,9 @@ javascript:
         transportLayer.clearLayers();
 
         var imageMap = {
-          'bus': 'http://i.imgur.com/4EVZdKL.png',
-          'tram': 'http://i.imgur.com/dqcjtrl.png',
-          'trol': 'http://i.imgur.com/kadvwJg.png',
+          'bus': 'https://i.imgur.com/4EVZdKL.png',
+          'tram': 'https://i.imgur.com/dqcjtrl.png',
+          'trol': 'https://i.imgur.com/kadvwJg.png',
         };
         var altMap = {
           'bus': 'автобус',
@@ -60,7 +60,7 @@ javascript:
                   + '<td class="icon-type">'
                     + '<img alt="' + altMap[item.vehicle_type] + '" src="' + imageMap[item.vehicle_type] + '" width="32" height="32" />'
                   + '</td>'
-                  + '<td>'+ (item.lowfloor ? '<img alt="доступний для людей на візку" src="http://i.imgur.com/nAvnARu.png" />' : '')  +'</td>'
+                  + '<td>'+ (item.lowfloor ? '<img alt="доступний для людей на візку" src="https://i.imgur.com/nAvnARu.png" />' : '')  +'</td>'
                   + '<td class="route"><strong>' + item['route'] + '</strong></td>'
                   + '<td class="direction">' + item['end_stop'] + '</td>'
                   + '<td>'+ item['time_left'] +'</td>'

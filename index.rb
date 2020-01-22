@@ -7,7 +7,7 @@ end
 
 get '/api/stops/:code' do |code|
   api_url = ENV['API_URL'] || 'https://api.lad.lviv.ua'
-  redirect to("#{api_url}/stops/#{stop_code}")
+  redirect to("#{api_url}/stops/#{code}")
 end
 
 get '/stops/:code' do |code|
@@ -56,7 +56,7 @@ post '/partners/startmobile' do
   builder = Nokogiri::XML::Builder.new(:encoding => 'UTF-8') do |xml|
     xml.answer(:type => 'sync') {
       xml.body(:paid => false) {
-        xml.cdata (result.count > 0) ? result.join("\n") : "Зв'язок з сервером втрачено. Працюємо над відновленням"
+        xml.cdata (result.count > 0) ? result.join("\n") : "Відсутні дані про прибуття транспорту на цю зупинку у найближчі 15 хв"
       }
     }
   end
