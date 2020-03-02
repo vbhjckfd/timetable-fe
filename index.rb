@@ -70,7 +70,7 @@ get '/closed-stops/1' do
 end
 
 get '/scheme' do
-  redirect to 'http://kaliberda.com/images/work/2019-05-scheme/scheme-lviv-electr-2019.pdf'
+  redirect to 'http://kaliberda.com/scheme-pdf'
 end
 
 get '/tmp' do
