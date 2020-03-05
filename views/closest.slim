@@ -35,8 +35,8 @@ javascript:
         return $.ajax({
           url: api_url + '/closest',
           data: {
-            longitude: center.lng,
-            latitude: center.lat
+            longitude: center.lng.toFixed(2),
+            latitude: center.lat.toFixed(2)
           }
         }).done(function(data) {
           return showMap(null, data);
@@ -46,7 +46,7 @@ javascript:
 
     var showCityCenter = function() {
       showClosestStops({
-        coords: {latitude: 49.840733, longitude: 24.028164}
+        coords: {latitude: 49.84, longitude: 24.02}
       });
     }
 
@@ -70,7 +70,7 @@ javascript:
           }
           stop_markers[value.code] = L.marker([value.latitude, value.longitude], {
             icon: L.icon({
-              iconUrl: 'https://i.imgur.com/fyrG0CJ.png',
+              iconUrl: 'bus-icon.png',
               iconAnchor: [20, 50]
             }),
             title: value.code,
