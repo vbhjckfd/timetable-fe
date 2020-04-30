@@ -20,6 +20,21 @@ post '/partners/startmobile' do
   xml_doc  = Nokogiri::XML(request.body.read).remove_namespaces!
   stop_code = xml_doc.xpath('//body').text.strip
 
+  # Some stops during quarantine have no transport
+  no_transport_stops = [1, 5, 72, 77, 85, 86, 87, 88, 89, 90, 91, 92, 93, 139, 140, 141, 142, 143, 144, 145, 157, 158, 159, 160, 162, 163, 164, 165, 182, 183, 184, 185, 193, 232, 233, 234, 235, 271, 276, 277, 295, 296, 297, 302, 303, 306, 310, 314, 322, 324, 326, 355, 356, 357, 358, 359, 360, 366, 367, 368, 412, 413, 414, 415, 416, 471, 472, 473, 506, 507, 570, 571, 572, 573, 627, 646, 647, 660, 663, 666, 667, 668, 669, 670, 680, 681, 682, 683, 697, 703, 729, 730, 735, 743, 746, 757, 758, 759, 760, 764, 765, 769, 770, 802, 803, 1006, 1007, 1071, 1072, 1074, 1075, 1076, 1077, 1107, 1108, 1114, 1116, 1171, 1180, 1193, 1194]
+  if no_transport_stops.include? stop_code.to_i
+    builder = Nokogiri::XML::Builder.new(:encoding => 'UTF-8') do |xml|
+      xml.answer(:type => 'sync') {
+        xml.body(:paid => false) {
+          xml.cdata "На цій зупинці на час карантину транспорту немає"
+        }
+      }
+    end
+
+    content_type 'application/xml'
+    return builder.to_xml
+  end
+
   api_url = ENV['API_URL'] || 'https://api.lad.lviv.ua'
   request_url = "#{api_url}/stops/#{stop_code}"
   raw_data = %x(curl --max-time 30 --silent "#{request_url}" -H "Accept: application/json")
