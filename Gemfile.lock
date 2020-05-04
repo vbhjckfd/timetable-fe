@@ -1,34 +1,40 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    faraday (1.0.1)
+      multipart-post (>= 1.2, < 3)
     mini_portile2 (2.4.0)
-    mustermann (1.0.3)
-    nokogiri (1.10.4)
+    multipart-post (2.1.1)
+    mustermann (1.1.1)
+      ruby2_keywords (~> 0.0.1)
+    nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
-    rack (2.0.7)
-    rack-protection (2.0.7)
+    rack (2.2.2)
+    rack-protection (2.0.8.1)
       rack
-    sinatra (2.0.7)
+    ruby2_keywords (0.0.2)
+    sinatra (2.0.8.1)
       mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (= 2.0.7)
+      rack-protection (= 2.0.8.1)
       tilt (~> 2.0)
     slim (4.0.1)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 2.0.6, < 2.1)
-    temple (0.8.1)
-    tilt (2.0.9)
+    temple (0.8.2)
+    tilt (2.0.10)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  faraday
   nokogiri (~> 1.6, >= 1.6.8)
   sinatra
   slim (~> 4.0, >= 4.0.1)
 
 RUBY VERSION
-   ruby 2.6.2p47
+   ruby 2.5.6p201
 
 BUNDLED WITH
-   1.17.2
+   1.17.3

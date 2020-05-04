@@ -1,4 +1,4 @@
-FROM ruby:2.5.6-stretch
+FROM ruby:2.5-stretch
 
 # Change to the application's directory
 ENV APP_HOME /application
